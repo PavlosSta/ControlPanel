@@ -1,0 +1,30 @@
+<h1 id="tableLabel">Users</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!users"><em>Loading...</em></p>
+
+<table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions" *ngIf="users">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Mobile Phone</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody id="users">
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.mobilePhone }}</td>
+      <td>
+        <div *ngIf="user.role == '1'">Guest</div>
+        <div *ngIf="user.role == '2'">Editor</div>
+        <div *ngIf="user.role == '3'">Admin</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
