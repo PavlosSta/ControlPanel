@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { EditComponent } from './edit/edit.component';
-import { DeleteComponent } from './delete/delete.component';
+
+import { FetchDataComponent } from './users-list-view/users-list-view.component';
+import { UpdateComponent } from './update-users-view/update-users-view.component';
+import { CreateComponent } from './create-user-view/create-user-view.component';
 
 import { DataTablesModule } from 'angular-datatables';
 
@@ -21,8 +22,8 @@ import { DataTablesModule } from 'angular-datatables';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    DeleteComponent,
-    EditComponent
+    UpdateComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,9 +33,9 @@ import { DataTablesModule } from 'angular-datatables';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'edit', component: EditComponent },
-      { path: 'delete', component: DeleteComponent },
+      { path: 'users-list-view', component: FetchDataComponent },
+      { path: 'create-user-view', component: CreateComponent },
+      { path: 'update-users-view', component: UpdateComponent },
     ])
   ],
   providers: [],

@@ -2,10 +2,10 @@ import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-delete',
-  templateUrl: './delete.component.html'
+  selector: 'app-create',
+  templateUrl: './create-user-view.component.html'
 })
-export class DeleteComponent {
+export class CreateComponent {
   public users: User[];
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
