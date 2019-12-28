@@ -26,7 +26,7 @@
         <div *ngIf="user.role == '2'">Editor</div>
         <div *ngIf="user.role == '3'">Admin</div>
       </td>
-      <td><a [routerLink]="" (click)="delete(user.Id)" class="btn btn-danger btn-sm float-right">Delete</a></td>
+      <td><a [routerLink]="" (click)="delete(user.id)" class="btn btn-danger btn-sm float-right">Delete</a></td>
     </tr>
   </tbody>
 </table>
