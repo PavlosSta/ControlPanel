@@ -12,7 +12,7 @@
       <th>Last Name</th>
       <th>Mobile Phone</th>
       <th>Role</th>
-      <th><strong>Edit</strong></th>
+      <th><strong>Delete</strong></th>
     </tr>
   </thead>
   <tbody id="users">
@@ -26,7 +26,7 @@
         <div *ngIf="user.role == '2'">Editor</div>
         <div *ngIf="user.role == '3'">Admin</div>
       </td>
-      <td>Edit</td>
+      <td><a [routerLink]="" (click)="delete(user.Id)" class="btn btn-danger btn-sm float-right">Delete</a></td>
     </tr>
   </tbody>
 </table>
