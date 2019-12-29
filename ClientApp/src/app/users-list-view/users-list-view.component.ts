@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { UserserviceService } from '../services/userservice.service';
+import { UserService } from '../services/user.service';
+import { User } from '../models/user';
+
 
 @Component({
   selector: 'app-update',
@@ -11,7 +13,7 @@ export class FetchDataComponent {
   public users: User[];
   users$: Observable<User[]>;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private userService: UserserviceService) {
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private userService: UserService) {
     http.get<User[]>(baseUrl + 'api/users').subscribe(result => {
       this.users = result;
     }, error => console.error(error));
@@ -33,12 +35,4 @@ export class FetchDataComponent {
       });
     }
   }
-}
-
-interface User {
-  Id: number;
-  Firstname: string;
-  lastName: string;
-  mobilePhone: string;
-  role: number;
 }
