@@ -39,8 +39,8 @@ export class UserService {
       );
   }
 
-  saveUser(blogPost): Observable<User> {
-    return this.http.post<User>(this.myAppUrl + this.myApiUrl, JSON.stringify(blogPost), this.httpOptions)
+  saveUser(user): Observable<User> {
+    return this.http.post<User>(this.myAppUrl + this.myApiUrl, JSON.stringify(user), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandler)

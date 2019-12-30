@@ -2,57 +2,34 @@
 
 <p>Enter user details.</p>
 
-<p *ngIf="!users"><em>Loading...</em></p>
+<form [formGroup]="userform" (ngSubmit)="createUser()">
+  <div class="form-group">
+    <label for="firstName"> First Name: </label>
+    <input type="text" formControlName="firstName">
+  </div>
 
-<table datatable class="table table-striped table-bordered table-sm row-border hover" *ngIf="users">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Mobile Phone</th>
-      <th>Role</th>
-      <th><strong>Delete</strong></th>
-    </tr>
-  </thead>
-  <tbody id="users">
-    <tr *ngFor="let user of users">
-      <td>{{ user.id }}</td>
-      <td>{{ user.firstName }}</td>
-      <td>{{ user.lastName }}</td>
-      <td>{{ user.mobilePhone }}</td>
-      <td>
-        <div *ngIf="user.role == '1'">Guest</div>
-        <div *ngIf="user.role == '2'">Editor</div>
-        <div *ngIf="user.role == '3'">Admin</div>
-      </td>
-      <td>Delete</td>
-    </tr>
-  </tbody>
-</table>
+  <div class="form-group">
+    <label for="lastName"> Last Name: </label>
+    <input type="text" formControlName="lastName">
+  </div>
 
-<form>
   <div class="form-group">
-    <label for="inputFirstName">First Name</label>
-    <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+    <label for="mobilePhone"> Mobile Phone: </label>
+    <input type="text" formControlName="mobilePhone">
   </div>
+
   <div class="form-group">
-    <label for="inputLastName">Last Name</label>
-    <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
-  </div>
-  <div class="form-group">
-    <label for="inputMobile">Mobile Phone</label>
-    <input type="tel" class="form-control" id="inputMobile" placeholder="Mobile Phone">
-  </div>
-  <div class="form-group">
-    <label for="roleControlSelect">Role</label>
-    <select class="form-control" id="roleControlSelect">
-      <option>Guest</option>
-      <option>Editor</option>
-      <option>Admin</option>
+    <label for="role"> Role: </label>
+    <select type="number" formControlName="role">
+      <option selected>0</option>
+      <option>1</option>
+      <option>2</option>
     </select>
   </div>
 
-  <button type="submit" class="btn btn-primary" (click)="incrementCounter()">Create User</button>
-</form>
+  <div class="form-group">
+    <button type="submit" class="btn btn-success float-right">Create User</button>
+    <button class="btn btn-secondary float-left" (click)="cancel()">Cancel</button>
+  </div>
 
+</form>
