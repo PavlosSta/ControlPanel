@@ -5,31 +5,31 @@
 <form [formGroup]="userform" (ngSubmit)="createUser()">
   <div class="form-group">
     <label for="firstName"> First Name: </label>
-    <input type="text" formControlName="firstName">
+    <input class="form-control" type="text" formControlName="firstName">
   </div>
 
   <div class="form-group">
     <label for="lastName"> Last Name: </label>
-    <input type="text" formControlName="lastName">
+    <input class="form-control" type="text" formControlName="lastName">
   </div>
 
   <div class="form-group">
     <label for="mobilePhone"> Mobile Phone: </label>
-    <input type="text" formControlName="mobilePhone">
+    <input class="form-control" type="text" formControlName="mobilePhone">
   </div>
 
   <div class="form-group">
     <label for="role"> Role: </label>
-    <select type="number" formControlName="role">
-      <option selected>0</option>
-      <option>1</option>
-      <option>2</option>
+    <select class="form-control" type="text" formControlName="role">
+      <option value="1" selected>Guest</option>
+      <option value="2">Editor</option>
+      <option value="3">Admin</option>
     </select>
   </div>
 
   <div class="form-group">
-    <button type="submit" class="btn btn-success float-right">Create User</button>
-    <button class="btn btn-secondary float-left" (click)="cancel()">Cancel</button>
+    <button type="submit" class="btn btn-success">Create User</button>
+    <button class="btn btn-secondary" (click)="cancel()">Cancel</button>
   </div>
 
 </form>
