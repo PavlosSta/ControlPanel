@@ -41,7 +41,7 @@ export class CreateComponent {
   }
 
   cancel() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/users-list-view']);
   }
 
 }

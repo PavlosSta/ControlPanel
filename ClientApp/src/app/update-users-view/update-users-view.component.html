@@ -1,32 +1,35 @@
-<h1 id="tableLabel">Users</h1>
+<h1 id="tableLabel">Update User</h1>
 
-<p>Update users.</p>
+<p>Enter user details for User ID: {{userId}}</p>
 
-<p *ngIf="!users"><em>Loading...</em></p>
+<form [formGroup]="userform" (ngSubmit)="updateUser()">
+  <div class="form-group">
+    <label for="firstName"> First Name: </label>
+    <input class="form-control" type="text" value={{firstName}} placeholder="First Name" formControlName="firstName">
+  </div>
 
-<table datatable class="table table-striped table-bordered table-sm row-border hover" *ngIf="users">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Mobile Phone</th>
-      <th>Role</th>
-      <th><strong>Delete</strong></th>
-    </tr>
-  </thead>
-  <tbody id="users">
-    <tr *ngFor="let user of users">
-      <td>{{ user.id }}</td>
-      <td>{{ user.firstName }}</td>
-      <td>{{ user.lastName }}</td>
-      <td>{{ user.mobilePhone }}</td>
-      <td>
-        <div *ngIf="user.role == '1'">Guest</div>
-        <div *ngIf="user.role == '2'">Editor</div>
-        <div *ngIf="user.role == '3'">Admin</div>
-      </td>
-      <td><a [routerLink]="" (click)="delete(user.id)" class="btn btn-danger btn-sm float-right">Delete</a></td>
-    </tr>
-  </tbody>
-</table>
+  <div class="form-group">
+    <label for="lastName"> Last Name: </label>
+    <input class="form-control" type="text" value={{lastName}} placeholder="Last Name" formControlName="lastName">
+  </div>
+
+  <div class="form-group">
+    <label for="mobilePhone"> Mobile Phone: </label>
+    <input class="form-control" type="text" value={{mobilePhone}} placeholder="Mobile Phone" formControlName="mobilePhone">
+  </div>
+
+  <div class="form-group">
+    <label for="role"> Role: </label>
+    <select class="form-control" type="text" formControlName="role">
+      <option value="1">Guest</option>
+      <option value="2">Editor</option>
+      <option value="3">Admin</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-success">Update User</button>
+    <button class="btn btn-secondary float-right" (click)="cancel()">Cancel</button>
+  </div>
+
+</form>

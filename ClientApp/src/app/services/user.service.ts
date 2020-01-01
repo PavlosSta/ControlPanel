@@ -31,8 +31,8 @@ export class UserService {
       );
   }
 
-  getUser(postId: number): Observable<User> {
-    return this.http.get<User>(this.myAppUrl + this.myApiUrl + postId)
+  getUser(userId: number): Observable<User> {
+    return this.http.get<User>(this.myAppUrl + this.myApiUrl + userId)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
@@ -47,16 +47,16 @@ export class UserService {
       );
   }
 
-  updateUser(postId: number, blogPost): Observable<User> {
-    return this.http.put<User>(this.myAppUrl + this.myApiUrl + postId, JSON.stringify(blogPost), this.httpOptions)
+  updateUser(userId: number, user): Observable<User> {
+    return this.http.put<User>(this.myAppUrl + this.myApiUrl + userId, JSON.stringify(user), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
       );
   }
 
-  deleteUser(postId: number): Observable<User> {
-    return this.http.delete<User>(this.myAppUrl + this.myApiUrl + postId)
+  deleteUser(userId: number): Observable<User> {
+    return this.http.delete<User>(this.myAppUrl + this.myApiUrl + userId)
       .pipe(
         retry(1),
         catchError(this.errorHandler)

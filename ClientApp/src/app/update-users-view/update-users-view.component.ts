@@ -1,8 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -10,29 +12,64 @@ import { User } from '../models/user';
   templateUrl: './update-users-view.component.html'
 })
 export class UpdateComponent {
-  public users: User[];
-  users$: Observable<User[]>;
+  userform: FormGroup;
+  user: User;
+  userId: number;
+  firstName: string;
+  lastName: string;
+  mobilePhone: string;
+  role: number;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private userService: UserService) {
-    http.get<User[]>(baseUrl + 'api/users').subscribe(result => {
-      this.users = result;
-    }, error => console.error(error));
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private avRoute: ActivatedRoute, private router: Router) {
+    const idParam = 'id';
+    if (this.avRoute.snapshot.params[idParam]) {
+      this.userId = this.avRoute.snapshot.params[idParam];
+    }
+
+    this.userform = this.formBuilder.group({
+      firstName: [''],
+      lastName: [''],
+      mobilePhone: [''],
+      role: [''],
+    })
   }
 
   ngOnInit() {
-    this.loadUsers();
+
+    this.userService.getUser(this.userId).subscribe(result => {
+      this.firstName = Object.values(result)[1],
+        this.lastName = Object.values(result)[2],
+        this.mobilePhone = Object.values(result)[3],
+        this.role = Object.values(result)[4]
+    })
   }
 
-  loadUsers() {
-    this.users$ = this.userService.getUsers();
-  }
 
-  delete(Id) {
-    const ans = confirm('Do you want to delete user with id: ' + Id);
-    if (ans) {
-      this.userService.deleteUser(Id).subscribe((data) => {
-        location.reload();
+  updateUser() {
+
+    let user: User = {
+      Id: +this.userId,
+      FirstName: this.userform.controls.firstName.value,
+      LastName: this.userform.controls.lastName.value,
+      MobilePhone: this.userform.controls.mobilePhone.value,
+      Role: +this.userform.controls.role.value,
+    };
+
+    if (user.FirstName == "") { user.FirstName = this.firstName }
+    if (user.LastName == "") { user.LastName = this.lastName }
+    if (user.MobilePhone == "") { user.MobilePhone = this.mobilePhone }
+    if (user.Role == NaN) { user.Role = +this.role }
+
+    console.log(user);
+
+    this.userService.updateUser(this.userId, user)
+      .subscribe((data) => {
+        this.router.navigate(['/users-list-view']);
       });
-    }
   }
+ 
+  cancel() {
+    this.router.navigate(['/users-list-view/']);
+  }
+
 }

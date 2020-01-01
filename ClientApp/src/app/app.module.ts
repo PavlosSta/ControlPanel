@@ -32,7 +32,7 @@ import { DataTablesModule } from 'angular-datatables';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'users-list-view', component: FetchDataComponent },
       { path: 'create-user-view', component: CreateComponent },
-      { path: 'update-users-view', component: UpdateComponent },
+      { path: 'update-users-view/:id', component: UpdateComponent },
     ])
   ],
   providers: [],

@@ -1,6 +1,6 @@
 <h1 id="tableLabel">Users</h1>
 
-<p>Update users.</p>
+<p></p>
 
 <p *ngIf="!users"><em>Loading...</em></p>
 
@@ -27,7 +27,7 @@
         <div *ngIf="user.role == '2'">Editor</div>
         <div *ngIf="user.role == '3'">Admin</div>
       </td>
-      <td><a [routerLink]="" (click)="delete(user.id)" class="btn btn-warning btn-sm">Edit</a></td>
+      <td><a [routerLink]="['/update-users-view/', user.id]" class="btn btn-warning btn-sm">Edit</a></td>
       <td><a [routerLink]="" (click)="delete(user.id)" class="btn btn-danger btn-sm">Delete</a></td>
     </tr>
   </tbody>
