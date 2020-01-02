@@ -59,9 +59,7 @@ export class UpdateComponent {
     if (user.LastName == "") { user.LastName = this.lastName }
     if (user.MobilePhone == "") { user.MobilePhone = this.mobilePhone }
     if (user.Role == NaN) { user.Role = +this.role }
-
-    console.log(user);
-
+    
     this.userService.updateUser(this.userId, user)
       .subscribe((data) => {
         this.router.navigate(['/users-list-view']);

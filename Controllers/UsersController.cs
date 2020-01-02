@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using AngProject.Models;
+using ControlPanel.Models;
 
-namespace AngProject.Controllers
+namespace ControlPanel.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

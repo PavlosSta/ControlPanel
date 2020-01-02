@@ -32,8 +32,6 @@ export class CreateComponent {
       Role: +this.userform.controls.role.value,
     };
 
-    console.log(user);
-
     this.userService.saveUser(user)
       .subscribe((data) => {
         this.router.navigate(['/users-list-view']);

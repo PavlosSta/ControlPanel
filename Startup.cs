@@ -6,9 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using AngProject.Models;
+using ControlPanel.Models;
 
-namespace AngProject
+namespace ControlPanel
 {
     public class Startup
     {
